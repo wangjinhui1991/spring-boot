@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.UserEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.UserEntity" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_email" property="companyEmail" jdbcType="VARCHAR" />
+    <result column="company_tel" property="companyTel" jdbcType="VARCHAR" />
+    <result column="company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="company_profile" property="companyProfile" jdbcType="VARCHAR" />
+    <result column="conpangy_fax" property="conpangyFax" jdbcType="VARCHAR" />
+    <result column="company_web" property="companyWeb" jdbcType="VARCHAR" />
+    <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="user_frozen_status" property="userFrozenStatus" jdbcType="INTEGER" />
+    <result column="user_search_status" property="userSearchStatus" jdbcType="INTEGER" />
+    <result column="user_wifi_status" property="userWifiStatus" jdbcType="INTEGER" />
+    <result column="user_hide_status" property="userHideStatus" jdbcType="INTEGER" />
+    <result column="user_strange_status" property="userStrangeStatus" jdbcType="INTEGER" />
+    <result column="bind_country" property="bindCountry" jdbcType="VARCHAR" />
+    <result column="bind_phone" property="bindPhone" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="company_logo" property="companyLogo" jdbcType="VARCHAR" />
+    <result column="member_start_time" property="memberStartTime" jdbcType="DATE" />
+    <result column="member_end_time" property="memberEndTime" jdbcType="DATE" />
+    <result column="member_status" property="memberStatus" jdbcType="INTEGER" />
+    <result column="easemob_status" property="easemobStatus" jdbcType="INTEGER" />
+    <result column="register_mode" property="registerMode" jdbcType="INTEGER" />
+    <result column="first_name" property="firstName" jdbcType="VARCHAR" />
+    <result column="last_name" property="lastName" jdbcType="VARCHAR" />
+    <result column="member_pay_type" property="memberPayType" jdbcType="INTEGER" />
+    <result column="firstPinyin" property="firstpinyin" jdbcType="VARCHAR" />
+    <result column="company_photos" property="companyPhotos" jdbcType="VARCHAR" />
+    <result column="user_add_price_status" property="userAddPriceStatus" jdbcType="INTEGER" />
+    <result column="boot_page_status" property="bootPageStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_email, password, head_img, user_name, country, company_name, company_email, 
+    company_tel, company_address, company_profile, conpangy_fax, company_web, register_time, 
+    user_status, user_frozen_status, user_search_status, user_wifi_status, user_hide_status, 
+    user_strange_status, bind_country, bind_phone, update_time, create_time, company_logo, 
+    member_start_time, member_end_time, member_status, easemob_status, register_mode, 
+    first_name, last_name, member_pay_type, firstPinyin, company_photos, user_add_price_status, 
+    boot_page_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ejet_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ejet_user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.UserEntity" >
+    insert into ejet_user (user_id, user_email, password, 
+      head_img, user_name, country, 
+      company_name, company_email, company_tel, 
+      company_address, company_profile, conpangy_fax, 
+      company_web, register_time, user_status, 
+      user_frozen_status, user_search_status, user_wifi_status, 
+      user_hide_status, user_strange_status, bind_country, 
+      bind_phone, update_time, create_time, 
+      company_logo, member_start_time, member_end_time, 
+      member_status, easemob_status, register_mode, 
+      first_name, last_name, member_pay_type, 
+      firstPinyin, company_photos, user_add_price_status, 
+      boot_page_status)
+    values (#{userId,jdbcType=INTEGER}, #{userEmail,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{headImg,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{companyEmail,jdbcType=VARCHAR}, #{companyTel,jdbcType=VARCHAR}, 
+      #{companyAddress,jdbcType=VARCHAR}, #{companyProfile,jdbcType=VARCHAR}, #{conpangyFax,jdbcType=VARCHAR}, 
+      #{companyWeb,jdbcType=VARCHAR}, #{registerTime,jdbcType=TIMESTAMP}, #{userStatus,jdbcType=INTEGER}, 
+      #{userFrozenStatus,jdbcType=INTEGER}, #{userSearchStatus,jdbcType=INTEGER}, #{userWifiStatus,jdbcType=INTEGER}, 
+      #{userHideStatus,jdbcType=INTEGER}, #{userStrangeStatus,jdbcType=INTEGER}, #{bindCountry,jdbcType=VARCHAR}, 
+      #{bindPhone,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{companyLogo,jdbcType=VARCHAR}, #{memberStartTime,jdbcType=DATE}, #{memberEndTime,jdbcType=DATE}, 
+      #{memberStatus,jdbcType=INTEGER}, #{easemobStatus,jdbcType=INTEGER}, #{registerMode,jdbcType=INTEGER}, 
+      #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{memberPayType,jdbcType=INTEGER}, 
+      #{firstpinyin,jdbcType=VARCHAR}, #{companyPhotos,jdbcType=VARCHAR}, #{userAddPriceStatus,jdbcType=INTEGER}, 
+      #{bootPageStatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.UserEntity" >
+    insert into ejet_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="headImg != null" >
+        head_img,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyEmail != null" >
+        company_email,
+      </if>
+      <if test="companyTel != null" >
+        company_tel,
+      </if>
+      <if test="companyAddress != null" >
+        company_address,
+      </if>
+      <if test="companyProfile != null" >
+        company_profile,
+      </if>
+      <if test="conpangyFax != null" >
+        conpangy_fax,
+      </if>
+      <if test="companyWeb != null" >
+        company_web,
+      </if>
+      <if test="registerTime != null" >
+        register_time,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="userFrozenStatus != null" >
+        user_frozen_status,
+      </if>
+      <if test="userSearchStatus != null" >
+        user_search_status,
+      </if>
+      <if test="userWifiStatus != null" >
+        user_wifi_status,
+      </if>
+      <if test="userHideStatus != null" >
+        user_hide_status,
+      </if>
+      <if test="userStrangeStatus != null" >
+        user_strange_status,
+      </if>
+      <if test="bindCountry != null" >
+        bind_country,
+      </if>
+      <if test="bindPhone != null" >
+        bind_phone,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="companyLogo != null" >
+        company_logo,
+      </if>
+      <if test="memberStartTime != null" >
+        member_start_time,
+      </if>
+      <if test="memberEndTime != null" >
+        member_end_time,
+      </if>
+      <if test="memberStatus != null" >
+        member_status,
+      </if>
+      <if test="easemobStatus != null" >
+        easemob_status,
+      </if>
+      <if test="registerMode != null" >
+        register_mode,
+      </if>
+      <if test="firstName != null" >
+        first_name,
+      </if>
+      <if test="lastName != null" >
+        last_name,
+      </if>
+      <if test="memberPayType != null" >
+        member_pay_type,
+      </if>
+      <if test="firstpinyin != null" >
+        firstPinyin,
+      </if>
+      <if test="companyPhotos != null" >
+        company_photos,
+      </if>
+      <if test="userAddPriceStatus != null" >
+        user_add_price_status,
+      </if>
+      <if test="bootPageStatus != null" >
+        boot_page_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null" >
+        #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null" >
+        #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyProfile != null" >
+        #{companyProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="conpangyFax != null" >
+        #{conpangyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWeb != null" >
+        #{companyWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null" >
+        #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFrozenStatus != null" >
+        #{userFrozenStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userSearchStatus != null" >
+        #{userSearchStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userWifiStatus != null" >
+        #{userWifiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userHideStatus != null" >
+        #{userHideStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userStrangeStatus != null" >
+        #{userStrangeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bindCountry != null" >
+        #{bindCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="bindPhone != null" >
+        #{bindPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyLogo != null" >
+        #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberStartTime != null" >
+        #{memberStartTime,jdbcType=DATE},
+      </if>
+      <if test="memberEndTime != null" >
+        #{memberEndTime,jdbcType=DATE},
+      </if>
+      <if test="memberStatus != null" >
+        #{memberStatus,jdbcType=INTEGER},
+      </if>
+      <if test="easemobStatus != null" >
+        #{easemobStatus,jdbcType=INTEGER},
+      </if>
+      <if test="registerMode != null" >
+        #{registerMode,jdbcType=INTEGER},
+      </if>
+      <if test="firstName != null" >
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null" >
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPayType != null" >
+        #{memberPayType,jdbcType=INTEGER},
+      </if>
+      <if test="firstpinyin != null" >
+        #{firstpinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhotos != null" >
+        #{companyPhotos,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddPriceStatus != null" >
+        #{userAddPriceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bootPageStatus != null" >
+        #{bootPageStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.UserEntity" >
+    update ejet_user
+    <set >
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmail != null" >
+        company_email = #{companyEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTel != null" >
+        company_tel = #{companyTel,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddress != null" >
+        company_address = #{companyAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="companyProfile != null" >
+        company_profile = #{companyProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="conpangyFax != null" >
+        conpangy_fax = #{conpangyFax,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWeb != null" >
+        company_web = #{companyWeb,jdbcType=VARCHAR},
+      </if>
+      <if test="registerTime != null" >
+        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userFrozenStatus != null" >
+        user_frozen_status = #{userFrozenStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userSearchStatus != null" >
+        user_search_status = #{userSearchStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userWifiStatus != null" >
+        user_wifi_status = #{userWifiStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userHideStatus != null" >
+        user_hide_status = #{userHideStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userStrangeStatus != null" >
+        user_strange_status = #{userStrangeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bindCountry != null" >
+        bind_country = #{bindCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="bindPhone != null" >
+        bind_phone = #{bindPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyLogo != null" >
+        company_logo = #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberStartTime != null" >
+        member_start_time = #{memberStartTime,jdbcType=DATE},
+      </if>
+      <if test="memberEndTime != null" >
+        member_end_time = #{memberEndTime,jdbcType=DATE},
+      </if>
+      <if test="memberStatus != null" >
+        member_status = #{memberStatus,jdbcType=INTEGER},
+      </if>
+      <if test="easemobStatus != null" >
+        easemob_status = #{easemobStatus,jdbcType=INTEGER},
+      </if>
+      <if test="registerMode != null" >
+        register_mode = #{registerMode,jdbcType=INTEGER},
+      </if>
+      <if test="firstName != null" >
+        first_name = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null" >
+        last_name = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberPayType != null" >
+        member_pay_type = #{memberPayType,jdbcType=INTEGER},
+      </if>
+      <if test="firstpinyin != null" >
+        firstPinyin = #{firstpinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="companyPhotos != null" >
+        company_photos = #{companyPhotos,jdbcType=VARCHAR},
+      </if>
+      <if test="userAddPriceStatus != null" >
+        user_add_price_status = #{userAddPriceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="bootPageStatus != null" >
+        boot_page_status = #{bootPageStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.UserEntity" >
+    update ejet_user
+    set user_email = #{userEmail,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      company_email = #{companyEmail,jdbcType=VARCHAR},
+      company_tel = #{companyTel,jdbcType=VARCHAR},
+      company_address = #{companyAddress,jdbcType=VARCHAR},
+      company_profile = #{companyProfile,jdbcType=VARCHAR},
+      conpangy_fax = #{conpangyFax,jdbcType=VARCHAR},
+      company_web = #{companyWeb,jdbcType=VARCHAR},
+      register_time = #{registerTime,jdbcType=TIMESTAMP},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      user_frozen_status = #{userFrozenStatus,jdbcType=INTEGER},
+      user_search_status = #{userSearchStatus,jdbcType=INTEGER},
+      user_wifi_status = #{userWifiStatus,jdbcType=INTEGER},
+      user_hide_status = #{userHideStatus,jdbcType=INTEGER},
+      user_strange_status = #{userStrangeStatus,jdbcType=INTEGER},
+      bind_country = #{bindCountry,jdbcType=VARCHAR},
+      bind_phone = #{bindPhone,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      company_logo = #{companyLogo,jdbcType=VARCHAR},
+      member_start_time = #{memberStartTime,jdbcType=DATE},
+      member_end_time = #{memberEndTime,jdbcType=DATE},
+      member_status = #{memberStatus,jdbcType=INTEGER},
+      easemob_status = #{easemobStatus,jdbcType=INTEGER},
+      register_mode = #{registerMode,jdbcType=INTEGER},
+      first_name = #{firstName,jdbcType=VARCHAR},
+      last_name = #{lastName,jdbcType=VARCHAR},
+      member_pay_type = #{memberPayType,jdbcType=INTEGER},
+      firstPinyin = #{firstpinyin,jdbcType=VARCHAR},
+      company_photos = #{companyPhotos,jdbcType=VARCHAR},
+      user_add_price_status = #{userAddPriceStatus,jdbcType=INTEGER},
+      boot_page_status = #{bootPageStatus,jdbcType=INTEGER}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

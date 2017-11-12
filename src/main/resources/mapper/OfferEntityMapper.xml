@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.OfferEntityMapper" >
+  <resultMap id="BaseResultMap" type="com.example.entity.OfferEntity" >
+    <id column="offer_id" property="offerId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
+    <result column="offer_name" property="offerName" jdbcType="VARCHAR" />
+    <result column="offer_descrip" property="offerDescrip" jdbcType="VARCHAR" />
+    <result column="offer_img" property="offerImg" jdbcType="VARCHAR" />
+    <result column="offer_voice" property="offerVoice" jdbcType="VARCHAR" />
+    <result column="offer_buy_price" property="offerBuyPrice" jdbcType="VARCHAR" />
+    <result column="offer_sell_price" property="offerSellPrice" jdbcType="VARCHAR" />
+    <result column="offer_currency" property="offerCurrency" jdbcType="VARCHAR" />
+    <result column="offer_buy_cry" property="offerBuyCry" jdbcType="VARCHAR" />
+    <result column="offer_sell_cry" property="offerSellCry" jdbcType="VARCHAR" />
+    <result column="offer_unit" property="offerUnit" jdbcType="VARCHAR" />
+    <result column="offer_arr_sheet" property="offerArrSheet" jdbcType="VARCHAR" />
+    <result column="contact_status" property="contactStatus" jdbcType="INTEGER" />
+    <result column="contact_user_id" property="contactUserId" jdbcType="INTEGER" />
+    <result column="contact_name" property="contactName" jdbcType="VARCHAR" />
+    <result column="contact_img" property="contactImg" jdbcType="VARCHAR" />
+    <result column="contact_email" property="contactEmail" jdbcType="VARCHAR" />
+    <result column="contact_company" property="contactCompany" jdbcType="VARCHAR" />
+    <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR" />
+    <result column="contact_tel" property="contactTel" jdbcType="VARCHAR" />
+    <result column="sort_time" property="sortTime" jdbcType="TIMESTAMP" />
+    <result column="make_offer_time" property="makeOfferTime" jdbcType="TIMESTAMP" />
+    <result column="offer_status" property="offerStatus" jdbcType="INTEGER" />
+    <result column="offer_is_copy" property="offerIsCopy" jdbcType="INTEGER" />
+    <result column="offer_frozen_status" property="offerFrozenStatus" jdbcType="INTEGER" />
+    <result column="offer_version" property="offerVersion" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="offer_no" property="offerNo" jdbcType="VARCHAR" />
+    <result column="offer_old_no" property="offerOldNo" jdbcType="VARCHAR" />
+    <result column="offer_tag_version" property="offerTagVersion" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    offer_id, user_id, user_email, offer_name, offer_descrip, offer_img, offer_voice, 
+    offer_buy_price, offer_sell_price, offer_currency, offer_buy_cry, offer_sell_cry, 
+    offer_unit, offer_arr_sheet, contact_status, contact_user_id, contact_name, contact_img, 
+    contact_email, contact_company, contact_phone, contact_tel, sort_time, make_offer_time, 
+    offer_status, offer_is_copy, offer_frozen_status, offer_version, update_time, create_time, 
+    offer_no, offer_old_no, offer_tag_version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ejet_my_offer
+    where offer_id = #{offerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ejet_my_offer
+    where offer_id = #{offerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.OfferEntity" >
+    insert into ejet_my_offer (offer_id, user_id, user_email, 
+      offer_name, offer_descrip, offer_img, 
+      offer_voice, offer_buy_price, offer_sell_price, 
+      offer_currency, offer_buy_cry, offer_sell_cry, 
+      offer_unit, offer_arr_sheet, contact_status, 
+      contact_user_id, contact_name, contact_img, 
+      contact_email, contact_company, contact_phone, 
+      contact_tel, sort_time, make_offer_time, 
+      offer_status, offer_is_copy, offer_frozen_status, 
+      offer_version, update_time, create_time, 
+      offer_no, offer_old_no, offer_tag_version
+      )
+    values (#{offerId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{userEmail,jdbcType=VARCHAR}, 
+      #{offerName,jdbcType=VARCHAR}, #{offerDescrip,jdbcType=VARCHAR}, #{offerImg,jdbcType=VARCHAR}, 
+      #{offerVoice,jdbcType=VARCHAR}, #{offerBuyPrice,jdbcType=VARCHAR}, #{offerSellPrice,jdbcType=VARCHAR}, 
+      #{offerCurrency,jdbcType=VARCHAR}, #{offerBuyCry,jdbcType=VARCHAR}, #{offerSellCry,jdbcType=VARCHAR}, 
+      #{offerUnit,jdbcType=VARCHAR}, #{offerArrSheet,jdbcType=VARCHAR}, #{contactStatus,jdbcType=INTEGER}, 
+      #{contactUserId,jdbcType=INTEGER}, #{contactName,jdbcType=VARCHAR}, #{contactImg,jdbcType=VARCHAR}, 
+      #{contactEmail,jdbcType=VARCHAR}, #{contactCompany,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, 
+      #{contactTel,jdbcType=VARCHAR}, #{sortTime,jdbcType=TIMESTAMP}, #{makeOfferTime,jdbcType=TIMESTAMP}, 
+      #{offerStatus,jdbcType=INTEGER}, #{offerIsCopy,jdbcType=INTEGER}, #{offerFrozenStatus,jdbcType=INTEGER}, 
+      #{offerVersion,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{offerNo,jdbcType=VARCHAR}, #{offerOldNo,jdbcType=VARCHAR}, #{offerTagVersion,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.OfferEntity" >
+    insert into ejet_my_offer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="offerId != null" >
+        offer_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userEmail != null" >
+        user_email,
+      </if>
+      <if test="offerName != null" >
+        offer_name,
+      </if>
+      <if test="offerDescrip != null" >
+        offer_descrip,
+      </if>
+      <if test="offerImg != null" >
+        offer_img,
+      </if>
+      <if test="offerVoice != null" >
+        offer_voice,
+      </if>
+      <if test="offerBuyPrice != null" >
+        offer_buy_price,
+      </if>
+      <if test="offerSellPrice != null" >
+        offer_sell_price,
+      </if>
+      <if test="offerCurrency != null" >
+        offer_currency,
+      </if>
+      <if test="offerBuyCry != null" >
+        offer_buy_cry,
+      </if>
+      <if test="offerSellCry != null" >
+        offer_sell_cry,
+      </if>
+      <if test="offerUnit != null" >
+        offer_unit,
+      </if>
+      <if test="offerArrSheet != null" >
+        offer_arr_sheet,
+      </if>
+      <if test="contactStatus != null" >
+        contact_status,
+      </if>
+      <if test="contactUserId != null" >
+        contact_user_id,
+      </if>
+      <if test="contactName != null" >
+        contact_name,
+      </if>
+      <if test="contactImg != null" >
+        contact_img,
+      </if>
+      <if test="contactEmail != null" >
+        contact_email,
+      </if>
+      <if test="contactCompany != null" >
+        contact_company,
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone,
+      </if>
+      <if test="contactTel != null" >
+        contact_tel,
+      </if>
+      <if test="sortTime != null" >
+        sort_time,
+      </if>
+      <if test="makeOfferTime != null" >
+        make_offer_time,
+      </if>
+      <if test="offerStatus != null" >
+        offer_status,
+      </if>
+      <if test="offerIsCopy != null" >
+        offer_is_copy,
+      </if>
+      <if test="offerFrozenStatus != null" >
+        offer_frozen_status,
+      </if>
+      <if test="offerVersion != null" >
+        offer_version,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="offerNo != null" >
+        offer_no,
+      </if>
+      <if test="offerOldNo != null" >
+        offer_old_no,
+      </if>
+      <if test="offerTagVersion != null" >
+        offer_tag_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="offerId != null" >
+        #{offerId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userEmail != null" >
+        #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="offerName != null" >
+        #{offerName,jdbcType=VARCHAR},
+      </if>
+      <if test="offerDescrip != null" >
+        #{offerDescrip,jdbcType=VARCHAR},
+      </if>
+      <if test="offerImg != null" >
+        #{offerImg,jdbcType=VARCHAR},
+      </if>
+      <if test="offerVoice != null" >
+        #{offerVoice,jdbcType=VARCHAR},
+      </if>
+      <if test="offerBuyPrice != null" >
+        #{offerBuyPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="offerSellPrice != null" >
+        #{offerSellPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="offerCurrency != null" >
+        #{offerCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="offerBuyCry != null" >
+        #{offerBuyCry,jdbcType=VARCHAR},
+      </if>
+      <if test="offerSellCry != null" >
+        #{offerSellCry,jdbcType=VARCHAR},
+      </if>
+      <if test="offerUnit != null" >
+        #{offerUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="offerArrSheet != null" >
+        #{offerArrSheet,jdbcType=VARCHAR},
+      </if>
+      <if test="contactStatus != null" >
+        #{contactStatus,jdbcType=INTEGER},
+      </if>
+      <if test="contactUserId != null" >
+        #{contactUserId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactImg != null" >
+        #{contactImg,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactCompany != null" >
+        #{contactCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactTel != null" >
+        #{contactTel,jdbcType=VARCHAR},
+      </if>
+      <if test="sortTime != null" >
+        #{sortTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="makeOfferTime != null" >
+        #{makeOfferTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offerStatus != null" >
+        #{offerStatus,jdbcType=INTEGER},
+      </if>
+      <if test="offerIsCopy != null" >
+        #{offerIsCopy,jdbcType=INTEGER},
+      </if>
+      <if test="offerFrozenStatus != null" >
+        #{offerFrozenStatus,jdbcType=INTEGER},
+      </if>
+      <if test="offerVersion != null" >
+        #{offerVersion,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offerNo != null" >
+        #{offerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="offerOldNo != null" >
+        #{offerOldNo,jdbcType=VARCHAR},
+      </if>
+      <if test="offerTagVersion != null" >
+        #{offerTagVersion,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.OfferEntity" >
+    update ejet_my_offer
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userEmail != null" >
+        user_email = #{userEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="offerName != null" >
+        offer_name = #{offerName,jdbcType=VARCHAR},
+      </if>
+      <if test="offerDescrip != null" >
+        offer_descrip = #{offerDescrip,jdbcType=VARCHAR},
+      </if>
+      <if test="offerImg != null" >
+        offer_img = #{offerImg,jdbcType=VARCHAR},
+      </if>
+      <if test="offerVoice != null" >
+        offer_voice = #{offerVoice,jdbcType=VARCHAR},
+      </if>
+      <if test="offerBuyPrice != null" >
+        offer_buy_price = #{offerBuyPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="offerSellPrice != null" >
+        offer_sell_price = #{offerSellPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="offerCurrency != null" >
+        offer_currency = #{offerCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="offerBuyCry != null" >
+        offer_buy_cry = #{offerBuyCry,jdbcType=VARCHAR},
+      </if>
+      <if test="offerSellCry != null" >
+        offer_sell_cry = #{offerSellCry,jdbcType=VARCHAR},
+      </if>
+      <if test="offerUnit != null" >
+        offer_unit = #{offerUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="offerArrSheet != null" >
+        offer_arr_sheet = #{offerArrSheet,jdbcType=VARCHAR},
+      </if>
+      <if test="contactStatus != null" >
+        contact_status = #{contactStatus,jdbcType=INTEGER},
+      </if>
+      <if test="contactUserId != null" >
+        contact_user_id = #{contactUserId,jdbcType=INTEGER},
+      </if>
+      <if test="contactName != null" >
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactImg != null" >
+        contact_img = #{contactImg,jdbcType=VARCHAR},
+      </if>
+      <if test="contactEmail != null" >
+        contact_email = #{contactEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="contactCompany != null" >
+        contact_company = #{contactCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null" >
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactTel != null" >
+        contact_tel = #{contactTel,jdbcType=VARCHAR},
+      </if>
+      <if test="sortTime != null" >
+        sort_time = #{sortTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="makeOfferTime != null" >
+        make_offer_time = #{makeOfferTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offerStatus != null" >
+        offer_status = #{offerStatus,jdbcType=INTEGER},
+      </if>
+      <if test="offerIsCopy != null" >
+        offer_is_copy = #{offerIsCopy,jdbcType=INTEGER},
+      </if>
+      <if test="offerFrozenStatus != null" >
+        offer_frozen_status = #{offerFrozenStatus,jdbcType=INTEGER},
+      </if>
+      <if test="offerVersion != null" >
+        offer_version = #{offerVersion,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offerNo != null" >
+        offer_no = #{offerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="offerOldNo != null" >
+        offer_old_no = #{offerOldNo,jdbcType=VARCHAR},
+      </if>
+      <if test="offerTagVersion != null" >
+        offer_tag_version = #{offerTagVersion,jdbcType=INTEGER},
+      </if>
+    </set>
+    where offer_id = #{offerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.OfferEntity" >
+    update ejet_my_offer
+    set user_id = #{userId,jdbcType=INTEGER},
+      user_email = #{userEmail,jdbcType=VARCHAR},
+      offer_name = #{offerName,jdbcType=VARCHAR},
+      offer_descrip = #{offerDescrip,jdbcType=VARCHAR},
+      offer_img = #{offerImg,jdbcType=VARCHAR},
+      offer_voice = #{offerVoice,jdbcType=VARCHAR},
+      offer_buy_price = #{offerBuyPrice,jdbcType=VARCHAR},
+      offer_sell_price = #{offerSellPrice,jdbcType=VARCHAR},
+      offer_currency = #{offerCurrency,jdbcType=VARCHAR},
+      offer_buy_cry = #{offerBuyCry,jdbcType=VARCHAR},
+      offer_sell_cry = #{offerSellCry,jdbcType=VARCHAR},
+      offer_unit = #{offerUnit,jdbcType=VARCHAR},
+      offer_arr_sheet = #{offerArrSheet,jdbcType=VARCHAR},
+      contact_status = #{contactStatus,jdbcType=INTEGER},
+      contact_user_id = #{contactUserId,jdbcType=INTEGER},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_img = #{contactImg,jdbcType=VARCHAR},
+      contact_email = #{contactEmail,jdbcType=VARCHAR},
+      contact_company = #{contactCompany,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      contact_tel = #{contactTel,jdbcType=VARCHAR},
+      sort_time = #{sortTime,jdbcType=TIMESTAMP},
+      make_offer_time = #{makeOfferTime,jdbcType=TIMESTAMP},
+      offer_status = #{offerStatus,jdbcType=INTEGER},
+      offer_is_copy = #{offerIsCopy,jdbcType=INTEGER},
+      offer_frozen_status = #{offerFrozenStatus,jdbcType=INTEGER},
+      offer_version = #{offerVersion,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      offer_no = #{offerNo,jdbcType=VARCHAR},
+      offer_old_no = #{offerOldNo,jdbcType=VARCHAR},
+      offer_tag_version = #{offerTagVersion,jdbcType=INTEGER}
+    where offer_id = #{offerId,jdbcType=INTEGER}
+  </update>
+</mapper>
